@@ -2,6 +2,12 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+
+  var currentDayEl = $('#currentDay');
+  var currentDay = (moment().format('dddd, MMMM Do'));
+  currentDayEl.text(currentDay);
+
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -21,3 +27,19 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+
+//add display current day of week with date ---DONE
+
+
+//create time blocks for standard business hours 9am to 5pm, color code
+// to show past (gray), present (red) and future (green).
+
+// function to audit and update hour slot colors to reflect current time
+
+//click event - on hour slot allows user to enter and event. 
+
+//click event - click on save box of hour slot to save entry to live storage
+
+//refresh page - event persists in timeblock
+
