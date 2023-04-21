@@ -3,9 +3,9 @@
 ____
 
 ### Website Links
-Deployed Site:
+Deployed Site: https://vincer66.github.io/Work-Day-Scheduler---Challenge-5/
 
-Repository:
+Repository: https://github.com/VinceR66/Work-Day-Scheduler---Challenge-5
 ____
 
 ### ScreenShot:
