@@ -1,0 +1,21 @@
+needed_funding: {
+    type: DataTypes.FLOAT,
+        allowNull: false,
+    },
+
+
+<div class="form-group">
+    <label for="project-funding">Genre:</label>
+    <input class="form-input" type="text" id="project-funding" name="project-funding" />
+</div>
+
+
+{ {format_amount needed_funding } }
+
+
+<p>
+    <span for="img" aria-label="money">💲</span>
+    <!-- Pass needed_funding value to the helper function -->
+    <span class="dollar-amount">{{ format_amount project.needed_funding }}</span>
+    needed!
+</p>
