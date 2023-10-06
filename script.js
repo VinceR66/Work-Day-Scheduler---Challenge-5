@@ -1,14 +1,38 @@
-
 $(document).ready(function () {
 
-  var $currentDayEl = $('#currentDay');
-  var $currentDay = (moment().format('dddd, MMMM Do'));
-  $currentDayEl.text($currentDay);
+  function displayTime() {
+    var timeDisplayEl = $('#currentDay');
+    var timeDisplay = (dayjs().format('MMM DD, YYYY [at] HH:mm:ss a'));
+    timeDisplayEl.text(timeDisplay);
 
-  $(".saveBtn").on("click", function () {
+  };
 
+  var currentHour = dayjs().hour();
+  console.log(currentHour);
+
+
+  $('.time-block').each(function () {
+    var scheduleHour = (parseInt($(this).attr("id").split("hour-")[1]));
+    console.log(scheduleHour);
+
+    if (scheduleHour < currentHour) {
+      $(this).addClass("past");
+      $(this).removeClass("present");
+      $(this).removeClass("future");
+    } else if
+      (scheduleHour === currentHour) {
+      $(this).addClass("present");
+      $(this).removeClass("past");
+      $(this).removeClass("future");
+    } else {
+      $(this).addClass("future");
+      $(this).removeClass("present");
+      $(this).removeClass("past");
+    }
+  })
+
+  $(".saveBtn").on('click', function () {
     var text = $(this).siblings(".description")[0].value;
-
     var time = $(this).parent().attr("id");
 
     localStorage.setItem(time, text);
@@ -23,30 +47,11 @@ $(document).ready(function () {
   $("#hour-15 .description").val(localStorage.getItem("hour-15"));
   $("#hour-16 .description").val(localStorage.getItem("hour-16"));
   $("#hour-17 .description").val(localStorage.getItem("hour-17"));
+  $("#hour-18 .description").val(localStorage.getItem("hour-18"));
 
-  var currentHour = moment().hour();
+  displayTime();
+  setInterval(displayTime, 1000);
 
-  // loop over time blocks
-  $(".time-block").each(function () {
-    var schedHour = (parseInt($(this).attr("id").split("hour-")[1]));
-
-    //check time - adjust color coding to reflect past, present or future
-    if (schedHour < currentHour) {
-      $(this).addClass("past");
-      $(this).removeClass("future");
-      $(this).removeClass("present");
-    }
-    else if (schedHour === currentHour) {
-      $(this).removeClass("past");
-      $(this).addClass("present");
-      $(this).removeClass("future");
-    }
-    else {
-      $(this).removeClass("present");
-      $(this).removeClass("past");
-      $(this).addClass("future");
-    }
-  })
 });
 
 
